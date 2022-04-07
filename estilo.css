@@ -1,0 +1,243 @@
+body{
+    margin: 0;
+    background: white;
+    font-family: monospace;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+}
+
+/* COMEÇO CABEÇALHO */
+
+.header{
+    border-bottom: 3px solid rgb(88, 0, 0);
+    background: rgb(150,28,28);
+}
+
+.container{
+    padding: 5px;
+    width: 80%;
+    margin: auto;
+    display: flex;
+}
+
+.header .container{
+    justify-content: space-between;
+}
+
+.header ul .atual{
+    font-weight: 1000;
+}
+
+.empresa {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    display: flex;
+}
+
+.logo {
+    width: 70px;
+}
+
+.titulo{
+    padding-left: 10px;
+    color: white;
+    width: fit-content; 
+}
+
+.navBar{
+    font-size: 16px;
+    color: white;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    width: 300px; 
+    padding: 0;
+    align-items: center;                                         
+}
+
+/* FIM CABEÇALHO */
+
+/* COMEÇO BANNER */
+
+.banner {
+    margin-top: 100px;
+    background-image: url("img/banner.jpg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    height: 500px;
+    color: white;
+    display: flex;
+}
+
+.banner .container p span{
+    font-weight: 1000;
+}
+
+.banner .container{
+    font-size: 36px;
+    justify-content: center;
+}
+
+.banner .container p{
+    text-shadow: black 0.1em 0.1em 0.4em;
+    width: 20%;
+}
+
+/* FIM DO BANNER */
+
+/* COMEÇO DO SOCIAL */
+
+.social {
+    margin-top: 100px;
+    background-color: white;
+    display: flex;
+    margin-bottom: 100px;
+    justify-content: space-around;
+}
+
+.box {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.social .container .boxes .box img{
+    width: 170px;
+}
+
+.social .container .boxes {
+    display: flex;
+}
+
+/* FIM DO SOCIAL */
+
+/* COMEÇO DO  FOOTER*/
+
+.footer{
+    background-color: rgb(150,28,28);
+    color: #fff;
+    height: 150px;
+    display: flex;
+    font-size: 15px;
+}
+
+.footer .container{
+    justify-content: center;
+}
+
+/* FIM DO FOOTER */
+
+/* -- PÁGINA LOGIN -- */
+
+/* INICIO CARD LOGIN*/
+
+.banner .container .card{
+    background-color: beige;
+    height: 400px;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    color: palevioletred;
+    align-items: center;
+    border-radius: 4px;
+}
+
+.card h1{
+    font-size: 30px;
+}
+
+.card h4{
+    font-size: 16px;
+}
+
+.card input{
+    border: 3px solid palevioletred;
+    padding: 10px;
+    outline: none;
+}
+
+.card button{
+    height: 50px;
+    width: 100px;
+    background-color: palevioletred;
+    margin-top: 25px;
+    font: 700 20px monospace;
+    color: #fff;
+    border: 0; border-radius: 4px;  
+    cursor: pointer;
+}
+
+/* FIM DO CARD LOGIN */
+
+/* PAGINA CADASTRO */
+
+/* INICIO CARD CADASTRO*/
+
+.containerCadastro{
+    width: 80%;
+    margin: auto;
+    display: flex;
+}
+
+.bannerCadastro {
+    background-image: url("img/bg-jelly-fish-para_outras_pags.png");
+    height: 1000px;
+    color: white;
+    display: flex;
+}
+
+.bannerCadastro .containerCadastro p span{
+    font-weight: 1000;
+}
+
+.bannerCadastro .containerCadastro{
+    font-size: 36px;
+    justify-content: center;
+}
+
+.bannerCadastro .containerCadastro p{
+    width: 10%;
+}
+
+.bannerCadastro .containerCadastro .cardCadastro{
+    background-color: beige;
+    height: 750px;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    color: palevioletred;
+    align-items: center;
+    border-radius: 4px;
+}
+
+.cardCadastro h1{
+    font-size: 30px;
+}
+
+.cardCadastro h4{
+    font-size: 16px;
+}
+
+.cardCadastro input{
+    border: 3px solid palevioletred;
+    padding: 10px;
+    outline: none;
+}
+
+.cardCadastro button{
+    height: 50px;
+    width: 120px;
+    background-color: palevioletred;
+    margin-top: 25px;
+    font: 700 20px monospace;
+    color: #fff;
+    border: 0; border-radius: 4px;  
+    cursor: pointer;
+}
+
+/* FIM DO CARD CADASTRO */
