@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CADASTRO</title>
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
+
+    <body>
+
+        <!--Começo do Cabeçalho-->
+        <div class="header">
+            <div class="container">
+
+                <div class="empresa">
+                    <a href="index.html"><img src="assets/imgs/logo.jpg" class="logo"></a> 
+
+                    <a href="index.html"><h1 class="titulo">SHOPFLUX</h1></a> 
+                </div>
+
+                <ul class="navBar">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="">Simulador</a></li>
+                    <li><a href="login.html">Login</a></li>
+                    <li class="atual"><a href="cadastro.html">Cadastro</a></li>
+                </ul>
+
+            </div>
+        </div>
+        <!--Fim do Cabeçalho-->
+
+        <!--Começo do Banner-->
+        <div class="bannerCadastro">
+            <div class="alerta_erro">
+                <div class="card_erro" id="cardErro">
+                    <span id="mensagem_erro"></span>
+                </div>
+            </div>
+            <div class="containerCadastro">
+                <div class="cardCadastro">
+                    <h1>Faça seu Cadastro</h1>
+                    <h4>Nome do Shopping</h4>
+                    <input type="text" id="shopping_input" placeholder="digite aqui">
+                    <h4>Nome Completo</h4>
+                    <input type="text" id="nome_input" placeholder="digite aqui">
+                    <h4>E-mail</h4>
+                    <input type="text" id="email_input" placeholder="seuemail@email.com">
+                    <h4>Senha</h4>
+                    <input type="password" id="senha_input" placeholder="*******">
+                    <h4>Confirmar Senha</h4>
+                    <input type="password" id="confirmacao_senha_input" placeholder="*******">
+                    <button onclick="cadastrar()">Cadastrar</button>
+                    <a href="login.html">Você já tem um cadastro?</a>
+                </div>
+                <div id="div_aguardar" class="loading-div">
+                    <img src="./assets/circle-loading.gif" id="loading-gif">
+                </div>
+
+                <div id="div_erros_login">
+
+                </div>
+            </div>    
+        </div>
+        <!--Fim do Banner-->
+
+        <!--Começo do footer-->
+        <footer id="myFooter">
+            <div class="container">
+                <div class="row">
+                    <div class="colunaLogo">
+                        <a href="index.html"> <img src="assets/imgs/logoRodape.jpg"></h2>
+                    </div>
+                    <div class="coluna">
+                        <h5>Inicio</h5>
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="">Simulador</a></li>
+                            <li><a href="login.html">Login</a></li>
+                            <li><a href="cadastro.html">Cadastro</a></li>
+                        </ul>
+                    </div>
+                    <div class="coluna">
+                        <h5>Sobre-nós</h5>
+                        <ul>
+                            <li><a href="">Informações da Empresa</a></li>
+                            <li><a href="">Contato</a></li>
+                        </ul>
+                    </div>
+                    <div class="coluna">
+                        <h5>Suporte</h5>
+                        <ul>
+                            <li><a href="">FAQ</a></li>
+                            <li><a href="">Telefones</a></li>
+                            <li><a href="">E-mail</a></li>
+                        </ul>
+                    </div>
+                    <div class="colunaSocial">
+                        <div class="social-networks">
+                            <a href="" class="instagram"><img src="assets/imgs/instagram.png"></a>
+                            <a href="" class="whatsapp"><img src="assets/imgs/whatsapp.png"></a>
+                            <a href="" class="facebook"><img src="assets/imgs/facebook.png"></a>
+                        </div>
+                            <button type="button" class="btn">Contato</button>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-copyright">
+                <p>© 2022 Copyright - SHOPFLUX</p>
+            </div>
+        </footer>
+        <!--Fim do footer-->
+        
+    </body>
+
+</html>
+<script>
+
+    function cadastrar() {
+        aguardar();
+
+        var shoppingVar = shopping_input.value;
+        var nomeVar = nome_input.value;
+        var emailVar = email_input.value;
+        var senhaVar = senha_input.value;
+        var confirmacaoSenhaVar = confirmacao_senha_input.value;
+        
+        if (shoppingVar == "" || nomeVar == "" || emailVar == "" || senhaVar == "" || confirmacaoSenhaVar == "") {
+            cardErro.style.display = "block"
+            mensagem_erro.innerHTML = "Preencha todos os campos para prosseguir!";
+
+            finalizarAguardar();
+            return false;
+        } 
+        else {
+            setInterval(sumirMensagem, 5000)
+        }
+
+        if (emailVar.indexOf("@") == -1 || emailVar.indexOf(".com") == -1) {
+            cardErro.style.display = "block"
+            mensagem_erro.innerHTML = "Ops, e-mail inválido! Verifique e tente novamente.";
+            finalizarAguardar();
+            return false;
+        }
+        else {
+            setInterval(sumirMensagem, 5000)
+        }
+
+        if (senhaVar != confirmacaoSenhaVar) {
+            cardErro.style.display = "block"
+            mensagem_erro.innerHTML = "As senhas inseridas devem ser iguais para prosseguir!";
+            finalizarAguardar();
+            return false;
+        }
+        else {
+            setInterval(sumirMensagem, 5000)
+        }
+
+        fetch("/usuarios/cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                shoppingServer: shoppingVar,
+                nomeServer: nomeVar,
+                emailServer: emailVar,
+                senhaServer: senhaVar
+            })
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                cardErro.style.display = "block"
+                mensagem_erro.innerHTML = "Cadastro realizado com sucesso!";
+                window.location = "login.html";
+                limparFormulario();
+                finalizarAguardar();
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+            finalizarAguardar();
+        });
+
+        return false;
+    }
+
+    function sumirMensagem() {
+        cardErro.style.display = "none"
+    }
+
+</script>
